@@ -1,0 +1,33 @@
+export default {
+  borderRadius: '8px',
+  boxShadow: `0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+                0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+                0 12.5px 10px rgba(0, 0, 0, 0.06),
+                0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+                0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+                0 100px 80px rgba(0, 0, 0, 0.12)`,
+  colors: {
+    primary: '#38539c',
+    secondary: '#f09a12',
+    success: '#75ddc0',
+    danger: '#bb3f2d',
+    dark: '#343a40',
+    light: '#f8f9fa',
+    gray: '#6c757d',
+    darkGrey: '#343a40',
+  },
+  margins: {
+    smaller: '4px,',
+    small: '8px',
+    normal: '16px',
+    large: '24px',
+    larger: '48px',
+  },
+  maxWidth: '980px',
+  paddings: {
+    small: '8px',
+    normal: '16px',
+    large: '24px',
+  },
+  transition: 'all 200ms ease-in-out',
+};
