@@ -1,19 +1,19 @@
 import { AuthTypes, User } from './types';
 
-export const postRequest = () => {
+export const authRequest = () => {
   return {
     type: AuthTypes.AUTH_REQUEST,
   };
 };
 
-export const postSuccess = (user: User) => {
+export const authSuccess = (user: User) => {
   return {
     type: AuthTypes.AUTH_SUCCESS,
     payload: user,
   };
 };
 
-export const postError = () => {
+export const authError = () => {
   return {
     type: AuthTypes.AUTH_ERROR,
   };
