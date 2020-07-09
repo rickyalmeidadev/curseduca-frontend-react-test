@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Post } from '../../components';
+
 import { Container, Content } from './styles';
 
 const Home: React.FC = () => {
@@ -7,6 +9,10 @@ const Home: React.FC = () => {
     <Container>
       <Content>
         <h1>Home</h1>
+
+        <ul>
+          <Post />
+        </ul>
       </Content>
     </Container>
   );

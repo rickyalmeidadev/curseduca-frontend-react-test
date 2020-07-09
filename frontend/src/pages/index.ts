@@ -1,4 +1,2 @@
-import Login from './Login';
-import Home from './Home';
-
-export { Login, Home };
+export { default as Home } from './Home';
+export { default as Login } from './Home';
