@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Post } from '../../components';
+import { Post, PostForm } from '../../components';
 
 import { Container, Content } from './styles';
 
@@ -9,7 +9,7 @@ const Home: React.FC = () => {
     <Container>
       <Content>
         <h1>Home</h1>
-
+        <PostForm />
         <ul>
           <Post />
         </ul>

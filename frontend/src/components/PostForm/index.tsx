@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Input, Textarea, Select } from '../';
+import { Input, Textarea, Select } from '..';
 
 const PostForm: React.FC = () => {
   return (
