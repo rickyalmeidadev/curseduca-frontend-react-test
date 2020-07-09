@@ -15,7 +15,12 @@ export const fetchLogin = (data: Login) => {
 
     try {
       const responseLogin = await api.post('auth/login', data);
-      api.defaults.headers.Authorization = `Bearer ${responseLogin.data.access_token}`;
+      console.log(responseLogin);
+
+      const { access_token } = responseLogin.data;
+
+      api.defaults.headers.Authorization = `Bearer ${access_token}`;
+      localStorage.setItem('CURSEDUCA_TOKEN', JSON.stringify(access_token));
 
       const responseUsers = await api.get('/users');
 
@@ -29,6 +34,7 @@ export const fetchLogin = (data: Login) => {
 
       dispatch(postSuccess(user));
     } catch (error) {
+      console.error('error: ', error);
       dispatch(postError());
     }
   };
