@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ApplicationState } from '../../store';
 import { fetchLogin } from '../../store/auth/thunks';
 
+import { useHistory } from 'react-router-dom';
+
 import { Input } from '../../components';
 
 import { Container, Content } from './styles';
@@ -18,6 +20,8 @@ const Login: React.FC = () => {
 
   const { error } = useSelector((state: ApplicationState) => state.auth);
 
+  const history = useHistory();
+
   const dispatch = useDispatch();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -25,10 +29,15 @@ const Login: React.FC = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
-    dispatch(fetchLogin(formData));
+    await dispatch(fetchLogin(formData));
+
+    if (!error) {
+      setFormData(initialFormData);
+      history.push('/');
+    }
   };
 
   return (

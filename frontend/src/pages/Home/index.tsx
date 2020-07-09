@@ -1,24 +1,28 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
 
+import { useSelector, useDispatch } from 'react-redux';
 import { ApplicationState } from '../../store';
+import { fetchGetPosts } from '../../store/posts/thunks';
 
 import { Post, PostForm } from '../../components';
 
 import { Container, Content } from './styles';
 
 const Home: React.FC = () => {
-  const store = useSelector((state: ApplicationState) => state);
+  const { data, loading } = useSelector((state: ApplicationState) => state.posts);
 
-  console.log(store.posts.data);
+  const dispacth = useDispatch();
+
+  useEffect(() => {
+    dispacth(fetchGetPosts());
+  }, [dispacth]);
+
   return (
     <Container>
       <Content>
         <h1>Home</h1>
         <PostForm />
-        <ul>
-          <Post />
-        </ul>
+        <ul>{loading ? <span>Loading...</span> : data.map(post => <Post key={post.id} />)}</ul>
       </Content>
     </Container>
   );
