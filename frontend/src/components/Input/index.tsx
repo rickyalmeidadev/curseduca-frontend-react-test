@@ -4,11 +4,11 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
 }
 
-const Input: React.FC<Props> = ({ type, name, label }) => {
+const Input: React.FC<Props> = ({ type, name, label, ...rest }) => {
   return (
     <label htmlFor={name}>
       {label}
-      <input type={type} name={name} id={name} />
+      <input {...rest} type={type} name={name} id={name} />
     </label>
   );
 };
