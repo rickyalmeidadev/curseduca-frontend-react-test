@@ -1,5 +1,5 @@
 import api from '../../services/api';
-import { setToken } from '../../services/auth';
+import { setToken, setUser } from '../../services/auth';
 
 import { Dispatch } from 'redux';
 import { authRequest, authSuccess, authError } from './actions';
@@ -31,6 +31,8 @@ export const fetchLogin = (data: Login) => {
           user = responseUsers.data[id];
         }
       }
+
+      setUser(user);
 
       dispatch(authSuccess(user));
     } catch (error) {

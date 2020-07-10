@@ -15,6 +15,9 @@ const reducer: Reducer<AuthState, AuthAction> = (state = INITIAL_STATE, action) 
     case AuthTypes.AUTH_SUCCESS:
       return { ...state, loading: false, error: false, user: action.payload };
 
+    case AuthTypes.AUTH_PERSISTED:
+      return { ...state, loading: false, error: false, user: action.payload };
+
     case AuthTypes.AUTH_ERROR:
       return { ...state, loading: false, error: true, user: {} as User };
 

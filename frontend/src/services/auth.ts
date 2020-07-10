@@ -1,14 +1,28 @@
 import jwtDecode from 'jwt-decode';
 import api from './api';
+import { User } from '../store/auth/types';
 
 const TOKEN_KEY = 'CURSEDUCA_TOKEN';
+const USER_KEY = 'CURSEDUCA_USER';
 
 export const setToken = (token: string) => {
   localStorage.setItem(TOKEN_KEY, JSON.stringify(token));
 };
 
+export const setUser = (user: User) => {
+  localStorage.setItem(USER_KEY, JSON.stringify(user));
+};
+
+export const getToken = () => {
+  return localStorage.getItem(TOKEN_KEY);
+};
+
+export const getUser = () => {
+  return localStorage.getItem(USER_KEY);
+};
+
 export const isAuthenticated = () => {
-  const token = localStorage.getItem(TOKEN_KEY);
+  const token = getToken();
 
   api.defaults.headers.common.Authorization = `Bearer ${token}`;
 

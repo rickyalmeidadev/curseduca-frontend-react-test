@@ -4,13 +4,13 @@ interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label: string;
 }
 
-const Input: React.FC<Props> = ({ name, label }) => {
+const Textarea: React.FC<Props> = ({ name, label, ...rest }) => {
   return (
     <label htmlFor={name}>
       {label}
-      <textarea name={name} id={name} />
+      <textarea {...rest} name={name} id={name} />
     </label>
   );
 };
 
-export default Input;
+export default Textarea;

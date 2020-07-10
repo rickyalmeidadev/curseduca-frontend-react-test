@@ -11,7 +11,7 @@ import {
 
 import { Post } from './types';
 
-type NewPost = Omit<Post, 'id'>;
+export type NewPost = Omit<Post, 'id'>;
 
 export const fetchGetPosts = () => {
   return async (dispatch: Dispatch) => {
