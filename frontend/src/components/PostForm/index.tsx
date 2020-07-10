@@ -4,7 +4,7 @@ import { Input, Textarea, Select } from '..';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationState } from '../../store';
-import { NewPost } from '../../store/posts/thunks';
+import { NewPost, fetchAddPosts } from '../../store/posts/thunks';
 
 interface NewPostForm {
   title: string;
@@ -23,13 +23,12 @@ type PostFormFields = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
 const PostForm: React.FC = () => {
   const [formData, setFormData] = useState(initialFormData);
 
-  const { user } = useSelector((state: ApplicationState) => state.auth);
+  const { auth, posts } = useSelector((state: ApplicationState) => state);
 
   const dispatch = useDispatch();
 
   const handleChange = (event: ChangeEvent<PostFormFields>) => {
     let { name, value } = event.target;
-    console.log(name, value);
     setFormData({ ...formData, [name]: value });
   };
 
@@ -37,16 +36,23 @@ const PostForm: React.FC = () => {
     event.preventDefault();
 
     const { title, text, categoryId } = formData;
+    const { id } = auth.user;
 
     const data: NewPost = {
       title,
       text,
-      id_category: categoryId,
-      id_user: user.id,
+      id_category: Number(categoryId),
+      id_user: id,
       date: new Date(),
     };
 
-    console.log(data);
+    await dispatch(fetchAddPosts(data));
+
+    const { loading, error } = posts;
+
+    if (!loading && !error) {
+      setFormData(initialFormData);
+    }
   };
 
   return (
