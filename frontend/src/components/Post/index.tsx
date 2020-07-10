@@ -2,6 +2,8 @@ import React from 'react';
 
 import { useDispatch } from 'react-redux';
 import { fetchDeletePosts } from '../../store/posts/thunks';
+import { Card, Title, Category, Text } from './styles';
+import { Button } from '..';
 
 interface Props {
   id: number;
@@ -18,12 +20,12 @@ const Post: React.FC<Props> = ({ title, text, category, id }) => {
   };
 
   return (
-    <li>
-      <h2>{title}</h2>
-      <small>{category}</small>
-      <p>{text}</p>
-      <button onClick={handleDelete}>Apagar</button>
-    </li>
+    <Card>
+      <Title>{title}</Title>
+      <Category>{category}</Category>
+      <Text>{text}</Text>
+      <Button onClick={handleDelete}>Apagar</Button>
+    </Card>
   );
 };
 
