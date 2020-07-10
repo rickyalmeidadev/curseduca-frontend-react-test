@@ -1,5 +1,24 @@
 import styled from 'styled-components';
 
+export const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  width: 100%;
+
+  > img {
+    cursor: pointer;
+    margin: 0 ${props => props.theme.margins.small};
+    transition: ${props => props.theme.transition};
+
+    :hover {
+      filter: saturate(2);
+      transition: ${props => props.theme.transition};
+    }
+  }
+`;
+
 export const Card = styled.li`
   background: ${props => props.theme.colors.light};
   box-shadow: 18px 18px 30px #d1d9e6, -18px -18px 30px #ffffff;
