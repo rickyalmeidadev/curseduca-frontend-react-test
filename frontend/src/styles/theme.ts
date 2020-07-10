@@ -12,10 +12,10 @@ export default {
     success: '#75ddc0',
     danger: '#F89374',
     dark: '#2A2A2A',
-    light: '#ECF0F3',
+    background: '#ECF0F3',
     grey: '#a2a2a2',
     darkGrey: '#343a40',
-    background: '#E5E5E5',
+    light: '#ECF0F3',
   },
   margins: {
     smaller: '4px,',
