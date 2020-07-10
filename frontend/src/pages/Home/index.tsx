@@ -53,6 +53,7 @@ const Home: React.FC = () => {
             data.map(post => (
               <Post
                 key={post.id}
+                id={post.id}
                 title={post.text}
                 text={post.text}
                 category={parseCategory(post.id_category)}

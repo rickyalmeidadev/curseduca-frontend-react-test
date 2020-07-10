@@ -6,9 +6,11 @@ import { fetchLogin } from '../../store/auth/thunks';
 
 import { useHistory } from 'react-router-dom';
 
-import { Input } from '../../components';
+import { Input, Button } from '../../components';
 
-import { Container, Content } from './styles';
+import { Container, Content, Form, Logo } from './styles';
+
+import logo from '../../assets/titulo-azul.png';
 
 const initialFormData = {
   email: '',
@@ -43,7 +45,12 @@ const Login: React.FC = () => {
   return (
     <Container>
       <Content>
-        <form onSubmit={handleSubmit}>
+        <Logo>
+          <img src={logo} alt="CursEduca Blog" />
+          <span>blog</span>
+        </Logo>
+
+        <Form onSubmit={handleSubmit}>
           <Input
             type="email"
             name="email"
@@ -58,10 +65,10 @@ const Login: React.FC = () => {
             onChange={handleChange}
             value={formData.password}
           />
-          <button type="submit">Login</button>
+          <Button type="submit">Login</Button>
 
           {error && <span>Email ou senha incorretos</span>}
-        </form>
+        </Form>
       </Content>
     </Container>
   );

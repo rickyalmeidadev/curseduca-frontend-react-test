@@ -16,6 +16,8 @@ export default createGlobalStyle`
     width: 100vw;
     max-width: 100%;
     min-height: 100vh;
+
+    background-color: ${props => props.theme.colors.background}
   }
 
   html {
@@ -44,7 +46,7 @@ export default createGlobalStyle`
   }
 
   body, input, button {
-    font: 1.6rem 'Roboto', sans-serif;
+    font: 1.6rem 'Work Sans', sans-serif;
   }
 
   a {

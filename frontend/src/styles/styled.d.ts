@@ -11,8 +11,9 @@ declare module 'styled-components' {
       danger: string;
       dark: string;
       light: string;
-      gray: string;
+      grey: string;
       darkGrey: string;
+      background: string;
     };
     margins: {
       smaller: string;

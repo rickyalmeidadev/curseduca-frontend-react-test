@@ -1,5 +1,5 @@
 export default {
-  borderRadius: '8px',
+  borderRadius: '16px',
   boxShadow: `0 2.8px 2.2px rgba(0, 0, 0, 0.034),
                 0 6.7px 5.3px rgba(0, 0, 0, 0.048),
                 0 12.5px 10px rgba(0, 0, 0, 0.06),
@@ -11,10 +11,11 @@ export default {
     secondary: '#f09a12',
     success: '#75ddc0',
     danger: '#bb3f2d',
-    dark: '#343a40',
-    light: '#f8f9fa',
-    gray: '#6c757d',
+    dark: '#2A2A2A',
+    light: '#ECF0F3',
+    grey: '#a2a2a2',
     darkGrey: '#343a40',
+    background: '#E5E5E5',
   },
   margins: {
     smaller: '4px,',
