@@ -1,10 +1,11 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 
-import { Input, Textarea, Select } from '..';
+import { Input, Textarea, Select, Button } from '..';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationState } from '../../store';
 import { NewPost, fetchAddPosts } from '../../store/posts/thunks';
+import { Form } from './styles';
 
 interface NewPostForm {
   title: string;
@@ -56,7 +57,7 @@ const PostForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Input
         type="text"
         name="title"
@@ -64,10 +65,12 @@ const PostForm: React.FC = () => {
         onChange={handleChange}
         value={formData.title}
       />
-      <Select onChange={handleChange} value={formData.categoryId} />
       <Textarea name="text" label="Corpo" onChange={handleChange} value={formData.text} />
-      <button type="submit">Postar</button>
-    </form>
+      <Select onChange={handleChange} value={formData.categoryId} />
+      <Button primary type="submit">
+        Postar
+      </Button>
+    </Form>
   );
 };
 
