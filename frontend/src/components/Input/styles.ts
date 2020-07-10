@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Label = styled.label`
   margin-bottom: ${props => props.theme.margins.normal};
@@ -12,7 +12,11 @@ export const Label = styled.label`
   color: ${props => props.theme.colors.dark};
 `;
 
-export const StyledInput = styled.input`
+interface InputProps {
+  invalid: boolean;
+}
+
+export const StyledInput = styled.input<InputProps>`
   width: 100%;
 
   margin-top: ${props => props.theme.margins.normal};
@@ -24,6 +28,12 @@ export const StyledInput = styled.input`
   border: none;
   border-radius: ${props => props.theme.borderRadius};
 
+  ${props =>
+    props.invalid &&
+    css`
+      border: 2px solid ${props => props.theme.colors.danger};
+    `}
+
   font-weight: normal;
   font-size: 1.8rem;
   letter-spacing: 0.02em;
@@ -32,5 +42,19 @@ export const StyledInput = styled.input`
 
   ::placeholder {
     color: ${props => props.theme.colors.grey};
+  }
+
+  :focus {
+    border: 2px solid #a6bba8;
+  }
+
+  @media (min-width: 768px) {
+    border: 2px solid ${props => props.theme.colors.light};
+
+    ${props =>
+      props.invalid &&
+      css`
+        border: 2px solid ${props => props.theme.colors.danger};
+      `}
   }
 `;

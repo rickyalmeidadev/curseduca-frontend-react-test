@@ -71,6 +71,19 @@ export const Form = styled.form`
   margin: 0 auto;
 
   > button {
-    margin-top: ${props => props.theme.margins.normal};
+    margin-top: ${props => props.theme.margins.large};
   }
+`;
+
+interface ErrorMessageProps {
+  visible: boolean;
+}
+
+export const ErrorMessage = styled.span<ErrorMessageProps>`
+  display: block;
+  visibility: ${props => (props.visible ? 'visible' : 'hidden')};
+
+  min-height: 2rem;
+
+  color: ${props => props.theme.colors.danger};
 `;

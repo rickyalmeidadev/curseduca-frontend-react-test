@@ -8,17 +8,25 @@ import { useHistory } from 'react-router-dom';
 
 import { Input, Button } from '../../components';
 
-import { Container, Content, Form, Logo } from './styles';
+import { Container, Content, Form, Logo, ErrorMessage } from './styles';
 
 import logo from '../../assets/titulo-azul.png';
+
+import { validateLoginData } from '../../helpers/validateLoginData';
 
 const initialFormData = {
   email: '',
   password: '',
 };
 
+const initialErrors = {
+  email: '',
+  password: '',
+};
+
 const Login: React.FC = () => {
   const [formData, setFormData] = useState(initialFormData);
+  const [validationErrors, setValidationErros] = useState(initialErrors);
 
   const { error, loading } = useSelector((state: ApplicationState) => state.auth);
 
@@ -31,8 +39,27 @@ const Login: React.FC = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleClear = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name } = event.target;
+    setValidationErros({ ...validationErrors, [name]: '' });
+  };
+
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+
+    const { email, password } = formData;
+    const validationResult = validateLoginData(email, password);
+
+    if (!validationResult.isValid) {
+      const { emailError, passwordError } = validationResult;
+
+      setValidationErros({
+        email: emailError,
+        password: passwordError,
+      });
+
+      return;
+    }
 
     await dispatch(fetchLogin(formData));
 
@@ -52,22 +79,30 @@ const Login: React.FC = () => {
 
         <Form onSubmit={handleSubmit}>
           <Input
-            type="email"
+            type="text"
             name="email"
             label="Email"
+            placeholder="Insira seu email"
             onChange={handleChange}
+            onFocus={handleClear}
             value={formData.email}
+            invalid={!!validationErrors.email}
           />
+          <ErrorMessage visible={!!validationErrors.email}>{validationErrors.email}</ErrorMessage>
           <Input
             type="password"
             name="password"
             label="Senha"
+            placeholder="********"
             onChange={handleChange}
+            onFocus={handleClear}
             value={formData.password}
+            invalid={!!validationErrors.password}
           />
+          <ErrorMessage visible={!!validationErrors.password}>
+            {validationErrors.password}
+          </ErrorMessage>
           <Button type="submit">Login</Button>
-
-          {error && <span>Email ou senha incorretos</span>}
         </Form>
       </Content>
     </Container>

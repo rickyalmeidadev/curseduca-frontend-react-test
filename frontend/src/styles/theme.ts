@@ -10,7 +10,7 @@ export default {
     primary: '#38539c',
     secondary: '#f09a12',
     success: '#75ddc0',
-    danger: '#bb3f2d',
+    danger: '#F89374',
     dark: '#2A2A2A',
     light: '#ECF0F3',
     grey: '#a2a2a2',
