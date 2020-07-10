@@ -1,10 +1,14 @@
-import { PostsState, PostsTypes, PostsAction, Post } from './types';
+import { PostsState, PostsTypes, PostsAction, Post, Author, Category } from './types';
 import { Reducer } from 'redux';
 
 const INITIAL_STATE: PostsState = {
   data: [],
   loading: false,
   error: false,
+  categories: [],
+  authors: [],
+  categoriesSelected: [],
+  authorsSelected: [],
 };
 
 const reducer: Reducer<PostsState, PostsAction> = (state = INITIAL_STATE, action) => {
@@ -34,6 +38,12 @@ const reducer: Reducer<PostsState, PostsAction> = (state = INITIAL_STATE, action
 
     case PostsTypes.POST_ERROR:
       return { ...state, loading: false, error: true };
+
+    case PostsTypes.GET_AUTHORS:
+      return { ...state, authors: action.payload as Author[] };
+
+    case PostsTypes.GET_CATEGORIES:
+      return { ...state, categories: action.payload as Category[] };
 
     default:
       return state;

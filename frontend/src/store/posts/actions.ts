@@ -1,4 +1,4 @@
-import { PostsTypes, Post } from './types';
+import { PostsTypes, Post, Author, Category } from './types';
 
 export const postRequest = () => {
   return {
@@ -30,5 +30,33 @@ export const deletePostSuccess = (id: number) => {
 export const postError = () => {
   return {
     type: PostsTypes.POST_ERROR,
+  };
+};
+
+export const getAuthors = (authors: Author[]) => {
+  return {
+    type: PostsTypes.GET_AUTHORS,
+    payload: authors,
+  };
+};
+
+export const getCategories = (categories: Category[]) => {
+  return {
+    type: PostsTypes.GET_CATEGORIES,
+    payload: categories,
+  };
+};
+
+export const setSelectedAuthors = (id: number) => {
+  return {
+    type: PostsTypes.SET_SELECTED_AUTHORS,
+    payload: id,
+  };
+};
+
+export const setSelectedCategories = (id: number) => {
+  return {
+    type: PostsTypes.SET_SELECTED_CATEGORIES,
+    payload: id,
   };
 };

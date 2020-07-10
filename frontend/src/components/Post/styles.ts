@@ -24,7 +24,7 @@ export const Card = styled.li`
   box-shadow: 18px 18px 30px #d1d9e6, -18px -18px 30px #ffffff;
   border-radius: ${props => props.theme.borderRadius};
 
-  margin: ${props => props.theme.margins.normal} auto;
+  margin: ${props => props.theme.margins.larger} auto;
   padding: ${props => props.theme.paddings.large};
 `;
 
