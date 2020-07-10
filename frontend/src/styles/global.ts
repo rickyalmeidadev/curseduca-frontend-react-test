@@ -12,6 +12,21 @@ export default createGlobalStyle`
     outline: none;
   }
 
+  ::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: ${props => props.theme.colors.background}
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: ${props => props.theme.colors.grey}  ;
+    border-radius: 24px;
+    border: 4px solid ${props => props.theme.colors.background}
+  }
+
   html, body, #root {
     width: 100vw;
     max-width: 100%;
@@ -27,26 +42,12 @@ export default createGlobalStyle`
   body {
     -webkit-font-smoothing: antialiased;
     scrollbar-width: thin;
-    scrollbar-color: #90A4AE #CFD8DC;
-  }
-
-  body::-webkit-scrollbar {
-    width: 16px;
-    height: 16px;
-  }
-
-  body::-webkit-scrollbar-track {
-    background: #CFD8DC
-  }
-
-  body::-webkit-scrollbar-thumb {
-    background-color: #90A4AE  ;
-    border-radius: 24px;
-    border: 4px solid #CFD8DC
+    scrollbar-color: ${props => props.theme.colors.grey} ${props => props.theme.colors.background};
   }
 
   body, input, button {
     font: 1.6rem 'Work Sans', sans-serif;
+    color: ${props => props.theme.colors.dark};
   }
 
   a {
