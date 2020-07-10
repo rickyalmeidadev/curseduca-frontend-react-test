@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ApplicationState } from '../../store';
 import { fetchGetPosts } from '../../store/posts/thunks';
 
-import { Post, PostForm } from '../../components';
+import { Post, PostForm, Header } from '../../components';
 
 import { Container, Content } from './styles';
 import api from '../../services/api';
@@ -43,8 +43,10 @@ const Home: React.FC = () => {
 
   return (
     <Container>
+      <Header />
       <Content>
-        <h1>Home</h1>
+        <h1>Postagens</h1>
+
         <PostForm />
         <ul>
           {loading ? (
@@ -54,7 +56,7 @@ const Home: React.FC = () => {
               <Post
                 key={post.id}
                 id={post.id}
-                title={post.text}
+                title={post.title}
                 text={post.text}
                 category={parseCategory(post.id_category)}
               />
