@@ -1,7 +1,21 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const StyledButton = styled.button`
-  background: ${props => props.theme.colors.light};
+interface ButtonProps {
+  primary: boolean;
+}
+
+export const StyledButton = styled.button<ButtonProps>`
+  ${props =>
+    props.primary
+      ? css`
+          background-color: ${props => props.theme.colors.primary};
+          color: ${props => props.theme.colors.light};
+        `
+      : css`
+          background-color: ${props => props.theme.colors.light};
+          color: ${props => props.theme.colors.dark};
+        `}
+
   box-shadow: 18px 18px 30px #d1d9e6, -18px -18px 30px #ffffff;
 
   border: none;
@@ -15,5 +29,16 @@ export const StyledButton = styled.button`
   letter-spacing: 0.02em;
   font-variant: small-caps;
 
-  color: ${props => props.theme.colors.dark};
+  :hover {
+    ${props =>
+      props.primary
+        ? css`
+            background-color: #3372a7;
+          `
+        : css`
+            background-color: #e2e6e9;
+          `}
+          
+    transition: ${props => props.theme.transition};
+  }
 `;
