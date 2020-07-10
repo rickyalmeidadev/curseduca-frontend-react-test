@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ApplicationState } from '../../store';
 import { fetchGetPosts } from '../../store/posts/thunks';
 
-import { Post, PostForm, Header } from '../../components';
+import { Post, PostForm, Header, Sidebar } from '../../components';
 
 import { Container, Content } from './styles';
 import api from '../../services/api';
@@ -45,24 +45,26 @@ const Home: React.FC = () => {
     <Container>
       <Header />
       <Content>
-        <h1>Postagens</h1>
-
-        <PostForm />
-        <ul>
-          {loading ? (
-            <span>Loading...</span>
-          ) : (
-            data.map(post => (
-              <Post
-                key={post.id}
-                id={post.id}
-                title={post.title}
-                text={post.text}
-                category={parseCategory(post.id_category)}
-              />
-            ))
-          )}
-        </ul>
+        <Sidebar />
+        <main>
+          <h1>Postagens</h1>
+          {/* <PostForm /> */}
+          <ul>
+            {loading ? (
+              <span>Loading...</span>
+            ) : (
+              data.map(post => (
+                <Post
+                  key={post.id}
+                  id={post.id}
+                  title={post.title}
+                  text={post.text}
+                  category={parseCategory(post.id_category)}
+                />
+              ))
+            )}
+          </ul>
+        </main>
       </Content>
     </Container>
   );

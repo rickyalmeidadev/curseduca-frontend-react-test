@@ -5,12 +5,16 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: ${props => props.theme.margins.normal};
+
   width: 100%;
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
   padding: ${props => props.theme.paddings.normal};
 
   > h1 {
-    color: ${props => props.theme.colors.primary};
+    margin-bottom: ${props => props.theme.margins.normal};
   }
 `;
