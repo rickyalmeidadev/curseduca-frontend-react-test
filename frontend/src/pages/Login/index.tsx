@@ -18,7 +18,7 @@ const initialFormData = {
 const Login: React.FC = () => {
   const [formData, setFormData] = useState(initialFormData);
 
-  const { error } = useSelector((state: ApplicationState) => state.auth);
+  const { error, loading } = useSelector((state: ApplicationState) => state.auth);
 
   const history = useHistory();
 
@@ -34,7 +34,7 @@ const Login: React.FC = () => {
 
     await dispatch(fetchLogin(formData));
 
-    if (!error) {
+    if (!error && !loading) {
       setFormData(initialFormData);
       history.push('/');
     }
