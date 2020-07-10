@@ -1,12 +1,14 @@
 export enum PostsTypes {
   POST_REQUEST = 'POST_REQUEST',
-  POST_SUCCESS = 'POST_SUCCESS',
+  GET_POSTS_SUCCESS = 'GET_POSTS_SUCCESS',
+  ADD_POST_SUCCESS = 'ADD_POST_SUCCESS',
+  DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS',
   POST_ERROR = 'POST_ERROR',
 }
 
 export interface PostsAction {
   type: PostsTypes;
-  payload: Post[];
+  payload: Post[] | Post | number;
 }
 
 export interface Post {
