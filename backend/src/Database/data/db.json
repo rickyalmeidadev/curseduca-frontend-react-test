@@ -1,20 +1,20 @@
 {
   "posts": [
     {
-      "id": 1,
       "title": "Minha primeira postagem",
-      "text": "Essa é a minha <b>primeira postagem</b>!",
-      "id_category": 3,
-      "id_user": 2,
-      "date": "2020-07-07 14:00:00"
+      "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil ratione corrupti nobis quisquam, totam aliquid eveniet neque laudantium similique, aspernatur, dicta mollitia! Cum ipsa animi ea quae quasi rem fugiat!\n",
+      "id_category": 2,
+      "id_user": 1,
+      "date": "2020-07-10T16:28:27.190Z",
+      "id": 1
     },
     {
-      "id": 2,
-      "title": "Meu primeiro artigo!",
-      "text": "<p>Meu primeiro artigo está demais!</p>",
-      "id_category": 3,
+      "title": "Essa é a segunda postagem",
+      "text": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet veritatis, et dolorem exercitationem commodi aut enim? Id, tenetur reiciendis recusandae, velit nobis asperiores sapiente fugiat, obcaecati accusamus molestiae nesciunt repellat?",
+      "id_category": 4,
       "id_user": 1,
-      "date": "2020-10-01 08:30:00"
+      "date": "2020-07-10T16:44:26.894Z",
+      "id": 2
     }
   ],
   "categories": [
