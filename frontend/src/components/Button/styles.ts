@@ -33,7 +33,7 @@ export const StyledButton = styled.button<ButtonProps>`
     ${props =>
       props.primary
         ? css`
-            background-color: #3372a7;
+            filter: saturate(2);
           `
         : css`
             background-color: #e2e6e9;
