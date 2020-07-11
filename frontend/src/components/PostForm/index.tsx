@@ -8,6 +8,9 @@ import { NewPost, fetchAddPosts } from '../../store/posts/thunks';
 import { Input, Textarea, Select, Button } from '..';
 import { Form } from './styles';
 
+import CKEditor from '@ckeditor/ckeditor5-react';
+import InlineEditor from '@ckeditor/ckeditor5-build-inline';
+
 interface NewPostForm {
   title: string;
   text: string;
@@ -34,6 +37,10 @@ const PostForm: React.FC = () => {
   const handleChange = (event: ChangeEvent<PostFormFields>) => {
     let { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  const handleTextarea = (text: string) => {
+    setFormData({ ...formData, text });
   };
 
   const handleSubmit = async (event: FormEvent) => {
@@ -73,7 +80,14 @@ const PostForm: React.FC = () => {
         onChange={handleChange}
         value={formData.title}
       />
-      <Textarea name="text" label="Corpo" onChange={handleChange} value={formData.text} />
+      <Textarea name="text" label="Corpo" onChange={handleChange} value={formData.text}>
+        <CKEditor
+          editor={InlineEditor}
+          onChange={(_: any, editor: any) => {
+            handleTextarea(editor.getData());
+          }}
+        />
+      </Textarea>
       <Select onChange={handleChange} value={formData.categoryId} />
       <Button primary type="submit">
         Postar
