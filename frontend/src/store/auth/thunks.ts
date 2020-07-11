@@ -1,6 +1,8 @@
 import api from '../../services/api';
 import { setToken, setUser } from '../../services/auth';
 
+import { History } from 'history'
+
 import { Dispatch } from 'redux';
 import { authRequest, authSuccess, authError } from './actions';
 import { User } from './types';
@@ -10,7 +12,7 @@ interface Login {
   password: string;
 }
 
-export const fetchLogin = (data: Login) => {
+export const fetchLogin = (data: Login, history: History) => {
   return async (dispatch: Dispatch) => {
     dispatch(authRequest());
 
@@ -35,6 +37,7 @@ export const fetchLogin = (data: Login) => {
       setUser(user);
 
       dispatch(authSuccess(user));
+      history.push('/');
     } catch (error) {
       console.error('error: ', error);
       dispatch(authError());

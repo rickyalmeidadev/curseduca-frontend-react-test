@@ -28,7 +28,7 @@ const Login: React.FC = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [validationErrors, setValidationErros] = useState(initialErrors);
 
-  const { error, loading } = useSelector((state: ApplicationState) => state.auth);
+  const { error } = useSelector((state: ApplicationState) => state.auth);
 
   const history = useHistory();
 
@@ -61,12 +61,7 @@ const Login: React.FC = () => {
       return;
     }
 
-    await dispatch(fetchLogin(formData));
-
-    if (!error && !loading) {
-      setFormData(initialFormData);
-      history.push('/');
-    }
+    dispatch(fetchLogin(formData, history));
   };
 
   return (
@@ -100,6 +95,9 @@ const Login: React.FC = () => {
           />
           <ErrorMessage visible={!!validationErrors.password}>
             {validationErrors.password}
+          </ErrorMessage>
+          <ErrorMessage visible={error}>
+            Email ou senha incorretos
           </ErrorMessage>
           <Button type="submit">Login</Button>
         </Form>
