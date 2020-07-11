@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDeletePosts } from '../../store/posts/thunks';
 import { ApplicationState } from '../../store';
 
-import { Card, Title, Category, Header, Author } from './styles';
+import { Card, Title, Info, Header, Author } from './styles';
 
 import deleteIcon from '../../assets/delete-icon.png';
 
@@ -39,17 +39,15 @@ const Post: React.FC<Props> = ({ title, text, category, id, owner, postDate }) =
     }
   };
 
-  console.log(authors);
-
   return (
     <Card>
       <Header>
         <Title>{title}</Title>
         {user.id === owner && <img src={deleteIcon} alt="Deletar" onClick={handleDelete} />}
       </Header>
-      <Category>
+      <Info>
         {category} - <Moment format="DD/MM/YYYY hh:mm">{postDate}</Moment>
-      </Category>
+      </Info>
       <hr />
       {ReactHtmlParser(text)}
 
@@ -58,4 +56,4 @@ const Post: React.FC<Props> = ({ title, text, category, id, owner, postDate }) =
   );
 };
 
-export default Post;
+export default memo(Post);

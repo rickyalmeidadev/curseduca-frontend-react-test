@@ -46,7 +46,7 @@ export const Title = styled.h2`
   margin-bottom: ${props => props.theme.margins.small};
 `;
 
-export const Category = styled.small`
+export const Info = styled.small`
   display: block;
 
   font-weight: normal;
