@@ -6,3 +6,4 @@ export { default as Select } from './Select';
 export { default as Button } from './Button';
 export { default as PostForm } from './PostForm';
 export { default as Post } from './Post';
+export { default as Loading } from './Loading';
