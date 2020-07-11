@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 
 import api from '../../services/api';
 
@@ -6,6 +6,7 @@ import { Container, Checkbox } from './styles';
 import { fetchGetAuthors, fetchGetCategories } from '../../store/posts/thunks';
 import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationState } from '../../store';
+import { setSelectedAuthors } from '../../store/posts/actions';
 
 interface Category {
   id: number;
@@ -54,6 +55,11 @@ const Sidebar: React.FC = () => {
   //   }
   // };
 
+  const handleFilter = (event: ChangeEvent<HTMLInputElement>) => {
+    const { id } = event.target;
+    dispatch(setSelectedAuthors(Number(id)));
+  };
+
   return (
     <Container>
       <h2>Filtros</h2>
@@ -62,7 +68,12 @@ const Sidebar: React.FC = () => {
         {authors.length
           ? authors.map(author => (
               <li key={author.id}>
-                <Checkbox type="checkbox" name={author.email} id={String(author.id)} />
+                <Checkbox
+                  type="checkbox"
+                  name={author.email}
+                  id={String(author.id)}
+                  onChange={handleFilter}
+                />
                 {author.email}
               </li>
             ))

@@ -7,8 +7,8 @@ const INITIAL_STATE: PostsState = {
   error: false,
   categories: [],
   authors: [],
-  categoriesSelected: [],
   authorsSelected: [],
+  categoriesSelected: [],
 };
 
 const reducer: Reducer<PostsState, PostsAction> = (state = INITIAL_STATE, action) => {
@@ -44,6 +44,24 @@ const reducer: Reducer<PostsState, PostsAction> = (state = INITIAL_STATE, action
 
     case PostsTypes.GET_CATEGORIES:
       return { ...state, categories: action.payload as Category[] };
+
+    case PostsTypes.SET_SELECTED_AUTHORS:
+      const id = action.payload as number;
+
+      const found = state.authorsSelected.find(authorId => authorId === id);
+
+      if (found) {
+        return {
+          ...state,
+          authorsSelected: state.authorsSelected.filter(authorId => authorId !== id),
+        };
+      }
+
+      state.authorsSelected.push(id);
+      return { ...state };
+
+    // case PostsTypes.SET_SELECTED_CATEGORIES:
+    //   return { ...state, categoriesSelected: action.payload };
 
     default:
       return state;

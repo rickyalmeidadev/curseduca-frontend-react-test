@@ -17,7 +17,7 @@ interface Categories {
 const Home: React.FC = () => {
   const [categories, setCategories] = useState<Categories[]>([]);
 
-  const { data, loading } = useSelector((state: ApplicationState) => state.posts);
+  const { data, loading, authorsSelected } = useSelector((state: ApplicationState) => state.posts);
 
   const dispacth = useDispatch();
 
@@ -53,15 +53,28 @@ const Home: React.FC = () => {
             {loading ? (
               <span>Loading...</span>
             ) : (
-              data.map(post => (
-                <Post
-                  key={post.id}
-                  id={post.id}
-                  title={post.title}
-                  text={post.text}
-                  category={parseCategory(post.id_category)}
-                />
-              ))
+              data
+                .filter(post => {
+                  /**
+                   * If there is at least one author selected,
+                   * we are going to filter.
+                   */
+                  if (authorsSelected.length) {
+                    return authorsSelected.includes(post.id_user);
+                  }
+
+                  return true;
+                })
+
+                .map(post => (
+                  <Post
+                    key={post.id}
+                    id={post.id}
+                    title={post.title}
+                    text={post.text}
+                    category={parseCategory(post.id_category)}
+                  />
+                ))
             )}
           </ul>
         </main>
