@@ -10,16 +10,6 @@ import { Container, Checkbox } from './styles';
 import { FiX } from 'react-icons/fi';
 import { Button } from '..';
 
-interface Category {
-  id: number;
-  name: string;
-}
-
-interface Author {
-  id: number;
-  email: string;
-}
-
 interface Props {
   toggle: boolean;
   handleToggle(): void;
