@@ -31,10 +31,10 @@ export const Content = styled.div`
 
 export const Logo = styled.figure`
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
 
   width: 100%;
+  min-height: 120px;
   max-width: 320px;
 
   margin: 0 auto ${props => props.theme.margins.larger};

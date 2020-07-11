@@ -74,7 +74,6 @@ const Login: React.FC = () => {
       <Content>
         <Logo>
           <img src={logo} alt="CursEduca Blog" />
-          <span>blog</span>
         </Logo>
 
         <Form onSubmit={handleSubmit}>

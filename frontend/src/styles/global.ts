@@ -28,8 +28,8 @@ export default createGlobalStyle`
   }
 
   html, body, #root {
+    overflow-x: hidden;
     width: 100vw;
-    max-width: 100%;
     min-height: 100vh;
 
     background-color: ${props => props.theme.colors.background}
