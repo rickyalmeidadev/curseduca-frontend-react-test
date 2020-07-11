@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const Label = styled.label`
+  position: relative;
+  z-index: 10;
+
   margin-bottom: ${props => props.theme.margins.normal};
 
   font-weight: bold;
@@ -10,9 +13,17 @@ export const Label = styled.label`
   letter-spacing: 0.02em;
 
   color: ${props => props.theme.colors.dark};
+
+  > svg {
+    position: absolute;
+    bottom: 16px;
+    right: 8px;
+    pointer-events: none;
+  }
 `;
 
 export const StyledSelect = styled.select`
+  appearance: none;
   width: 100%;
 
   margin-top: ${props => props.theme.margins.normal};

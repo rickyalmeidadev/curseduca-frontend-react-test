@@ -2,6 +2,8 @@ import React, { SelectHTMLAttributes } from 'react';
 
 import { StyledSelect, Label } from './styles';
 
+import { FiChevronDown } from 'react-icons/fi';
+
 const Select: React.FC<SelectHTMLAttributes<HTMLSelectElement>> = ({ ...rest }) => {
   return (
     <Label>
@@ -12,6 +14,7 @@ const Select: React.FC<SelectHTMLAttributes<HTMLSelectElement>> = ({ ...rest }) 
         <option value={3}>Avisos</option>
         <option value={4}>Conteúdos</option>
       </StyledSelect>
+      <FiChevronDown size="24px" color="#2A2A2A" />
     </Label>
   );
 };
