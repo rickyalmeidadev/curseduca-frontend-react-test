@@ -24,10 +24,10 @@ export const StyledButton = styled.button<ButtonProps>`
   padding: ${props => props.theme.paddings.small} ${props => props.theme.paddings.large};
 
   font-weight: normal;
-  font-size: 2.6rem;
+  font-size: 2rem;
   text-align: center;
   letter-spacing: 0.02em;
-  font-variant: small-caps;
+  text-transform: uppercase;
 
   :hover {
     ${props =>

@@ -4,8 +4,8 @@ export const Label = styled.label`
   margin-bottom: ${props => props.theme.margins.normal};
 
   font-weight: bold;
-  font-size: 2rem;
-  font-variant: small-caps;
+  font-size: 1.6rem;
+  text-transform: uppercase;
 
   letter-spacing: 0.02em;
 
