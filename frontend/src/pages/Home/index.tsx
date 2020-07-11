@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { ApplicationState } from '../../store';
+import { Post as PostType } from '../../store/posts/types';
 import { fetchGetPosts, fetchGetCategories } from '../../store/posts/thunks';
 
 import { Post, Header, Sidebar, Button, Loading } from '../../components';
@@ -35,6 +36,14 @@ const Home: React.FC = () => {
     return category.name;
   };
 
+  const applyFilterToPost = (post: PostType) => {
+    const shouldFilter =
+      (!authorsSelected.includes(post.id_user) && authorsSelected.length > 0) ||
+      (!categoriesSelected.includes(post.id_category) && categoriesSelected.length > 0);
+
+    return shouldFilter;
+  };
+
   const handleToggle = () => {
     setToggle(!toggle);
   };
@@ -59,30 +68,12 @@ const Home: React.FC = () => {
             {loading ? (
               <Loading />
             ) : (
-              data
-                .filter(post => {
-                  let shouldNotFilter = true;
-                  /**
-                   * If there is at least one author selected,
-                   * we are going to filter.
-                   */
-                  if (authorsSelected.length) {
-                    shouldNotFilter = authorsSelected.includes(post.id_user);
-                  }
-                  return shouldNotFilter;
-                })
-                .filter(post => {
-                  let shouldNotFilter = true;
-                  /**
-                   * If there is at least one category selected,
-                   * we are going to filter.
-                   */
-                  if (categoriesSelected.length) {
-                    shouldNotFilter = categoriesSelected.includes(post.id_category);
-                  }
-                  return shouldNotFilter;
-                })
-                .map(post => (
+              data.map(post => {
+                if (applyFilterToPost(post)) {
+                  return null;
+                }
+
+                return (
                   <Post
                     key={post.id}
                     id={post.id}
@@ -92,7 +83,8 @@ const Home: React.FC = () => {
                     category={parseCategory(post.id_category)}
                     postDate={post.date}
                   />
-                ))
+                );
+              })
             )}
           </ul>
         </main>
