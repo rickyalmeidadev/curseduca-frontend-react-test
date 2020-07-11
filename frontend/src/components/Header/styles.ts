@@ -20,7 +20,22 @@ export const Content = styled.div`
     display: none;
   }
 
+  p {
+    display: none;
+  }
+
   @media (min-width: 768px) {
+    > p {
+      cursor: pointer;
+
+      font-family: Work Sans;
+      font-weight: normal;
+      font-size: 2rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+
+      color: ${props => props.theme.colors.dark};
+    }
     > svg {
       display: none;
     }

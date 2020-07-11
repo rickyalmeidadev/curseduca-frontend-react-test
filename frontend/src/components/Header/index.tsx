@@ -1,6 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
+import { clearUserAndTokenFromLocalStorage } from '../../services/auth';
+
 import { Button } from '..';
 import { Container, Content, Logo } from './styles';
 import { FiMenu } from 'react-icons/fi';
@@ -15,12 +17,13 @@ interface Props {
 const Header: React.FC<Props> = ({ toggle = null, handleToggle }) => {
   const history = useHistory();
 
-  const handleHistory = () => {
-    history.push('/add');
-  };
-
   const handleGoBack = () => {
     history.goBack();
+  };
+
+  const handleLogout = () => {
+    history.push('/login');
+    clearUserAndTokenFromLocalStorage();
   };
 
   return (
@@ -32,9 +35,7 @@ const Header: React.FC<Props> = ({ toggle = null, handleToggle }) => {
         {toggle !== null ? (
           <>
             <FiMenu size="28px" color="#2A2A2A" onClick={handleToggle} />
-            <Button primary onClick={handleHistory}>
-              Adicionar Post
-            </Button>
+            <p onClick={handleLogout}>logout</p>
           </>
         ) : (
           <Button onClick={handleGoBack}>Voltar</Button>

@@ -54,13 +54,27 @@ export const Container = styled.aside<SidebarProps>`
     margin: ${props => props.theme.margins.large} auto;
   }
 
+  > p {
+    cursor: pointer;
+
+    font-family: Work Sans;
+    font-weight: normal;
+    font-size: 2rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    text-align: center;
+
+    color: ${props => props.theme.colors.dark};
+  }
+
   @media (min-width: 768px) {
     position: relative;
     height: auto;
     background-color: transparent;
     transform: translateX(0);
+    padding: ${props => props.theme.paddings.normal} 0;
 
-    > button, > svg {
+    > button, > svg, > p {
       display: none;
     }
   }

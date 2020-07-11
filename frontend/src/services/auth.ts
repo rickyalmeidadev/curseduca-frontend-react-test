@@ -21,6 +21,11 @@ export const getUser = () => {
   return localStorage.getItem(USER_KEY);
 };
 
+export const clearUserAndTokenFromLocalStorage = () => {
+  localStorage.removeItem(USER_KEY);
+  localStorage.removeItem(TOKEN_KEY);
+};
+
 export const isAuthenticated = () => {
   const token = getToken();
 

@@ -1,4 +1,5 @@
 import React, { useEffect, ChangeEvent } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationState } from '../../store';
@@ -9,6 +10,7 @@ import { Container, Checkbox } from './styles';
 
 import { FiX } from 'react-icons/fi';
 import { Button } from '..';
+import { clearUserAndTokenFromLocalStorage } from '../../services/auth';
 
 interface Props {
   toggle: boolean;
@@ -16,6 +18,8 @@ interface Props {
 }
 
 const Sidebar: React.FC<Props> = ({ toggle, handleToggle }) => {
+  const history = useHistory();
+
   const { authors, categories } = useSelector((state: ApplicationState) => state.posts);
 
   const dispatch = useDispatch();
@@ -40,6 +44,15 @@ const Sidebar: React.FC<Props> = ({ toggle, handleToggle }) => {
       default:
         break;
     }
+  };
+
+  const handleLogout = () => {
+    history.push('/login');
+    clearUserAndTokenFromLocalStorage();
+  };
+
+  const handleHistory = () => {
+    history.push('/add');
   };
 
   return (
@@ -79,7 +92,10 @@ const Sidebar: React.FC<Props> = ({ toggle, handleToggle }) => {
           : null}
       </ul>
       <Button onClick={handleToggle}>Filtrar</Button>
-      <Button primary>Adicionar Post</Button>
+      <Button primary onClick={handleHistory}>
+        Adicionar Post
+      </Button>
+      <p onClick={handleLogout}>logout</p>
     </Container>
   );
 };
