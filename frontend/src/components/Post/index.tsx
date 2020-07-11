@@ -1,15 +1,12 @@
 import React, { memo } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchDeletePosts } from '../../store/posts/thunks';
-import { ApplicationState } from '../../store';
-
-import { Card, Title, Info, Header, Author } from './styles';
-
-import deleteIcon from '../../assets/delete-icon.png';
-
 import ReactHtmlParser from 'react-html-parser';
 import Moment from 'react-moment';
+
+import { ApplicationState } from '../../store';
+import { fetchDeletePosts } from '../../store/posts/thunks';
+import { Card, Title, Info, Header, Author } from './styles';
+import deleteIcon from '../../assets/delete-icon.png';
 
 interface Props {
   id: number;

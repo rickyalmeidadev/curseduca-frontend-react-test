@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
 import { useSelector, useDispatch } from 'react-redux';
+
 import { ApplicationState } from '../../store';
 import { fetchGetPosts, fetchGetCategories } from '../../store/posts/thunks';
-
 import { Post, Header, Sidebar, Button, Loading } from '../../components';
-
 import { Container, Content, PostControls } from './styles';
-
 import { isAFuturePost, applyFilterToPost } from '../../helpers/filters';
 
 const Home: React.FC = () => {

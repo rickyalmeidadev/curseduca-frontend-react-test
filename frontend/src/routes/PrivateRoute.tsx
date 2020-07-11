@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Redirect, useLocation, RouteProps } from 'react-router-dom';
 
-import { Loading } from '../components';
-
-import { isAuthenticated } from '../services/auth';
-import { useDispatch, useSelector } from 'react-redux';
-import { authPersisted } from '../store/auth/actions';
 import { ApplicationState } from '../store';
+import { authPersisted } from '../store/auth/actions';
+import { isAuthenticated } from '../services/auth';
+import { Loading } from '../components';
 
 interface Props extends RouteProps {
   component: React.FC;

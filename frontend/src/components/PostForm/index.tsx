@@ -1,14 +1,12 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { useHistory } from 'react-router-dom';
-
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import moment from 'moment';
+
 import { ApplicationState } from '../../store';
 import { NewPost, fetchAddPosts } from '../../store/posts/thunks';
-
 import { Input, Textarea, Select, Button } from '..';
 import { Form } from './styles';
-
-import moment from 'moment';
 
 interface NewPostForm {
   title: string;

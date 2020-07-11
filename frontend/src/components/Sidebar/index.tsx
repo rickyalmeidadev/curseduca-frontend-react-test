@@ -1,16 +1,14 @@
 import React, { useEffect, ChangeEvent } from 'react';
-import { useHistory } from 'react-router-dom';
-
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { FiX } from 'react-icons/fi';
+
 import { ApplicationState } from '../../store';
 import { fetchGetAuthors, fetchGetCategories } from '../../store/posts/thunks';
 import { setSelectedAuthors, setSelectedCategories } from '../../store/posts/actions';
-
-import { Container, Checkbox } from './styles';
-
-import { FiX } from 'react-icons/fi';
-import { Button } from '..';
 import { clearUserAndTokenFromLocalStorage } from '../../services/auth';
+import { Button } from '..';
+import { Container, Checkbox } from './styles';
 
 interface Props {
   toggle: boolean;

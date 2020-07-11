@@ -1,12 +1,10 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-
-import { clearUserAndTokenFromLocalStorage } from '../../services/auth';
-
-import { Button } from '..';
-import { Container, Content, Logo } from './styles';
 import { FiMenu } from 'react-icons/fi';
 
+import { clearUserAndTokenFromLocalStorage } from '../../services/auth';
+import { Button } from '..';
+import { Container, Content, Logo } from './styles';
 import logo from '../../assets/green-logo.png';
 
 interface Props {

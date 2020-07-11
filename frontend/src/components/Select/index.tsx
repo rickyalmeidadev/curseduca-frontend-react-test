@@ -1,8 +1,7 @@
 import React, { SelectHTMLAttributes } from 'react';
+import { FiChevronDown } from 'react-icons/fi';
 
 import { StyledSelect, Label } from './styles';
-
-import { FiChevronDown } from 'react-icons/fi';
 
 const Select: React.FC<SelectHTMLAttributes<HTMLSelectElement>> = ({ ...rest }) => {
   return (

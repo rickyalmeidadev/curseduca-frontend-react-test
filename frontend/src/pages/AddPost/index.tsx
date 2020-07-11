@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { PostForm, Header } from '../../components';
-
 import { Container, Content } from './styles';
 
 const AddPost: React.FC = () => {

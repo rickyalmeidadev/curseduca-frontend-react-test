@@ -1,18 +1,13 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-
 import { useSelector, useDispatch } from 'react-redux';
-import { ApplicationState } from '../../store';
-import { fetchLogin } from '../../store/auth/thunks';
-
 import { useHistory } from 'react-router-dom';
 
-import { Input, Button } from '../../components';
-
-import { Container, Content, Form, Logo, ErrorMessage } from './styles';
-
-import logo from '../../assets/green-logo.png';
-
+import { ApplicationState } from '../../store';
+import { fetchLogin } from '../../store/auth/thunks';
 import { validateLoginData } from '../../helpers/validateLoginData';
+import { Input, Button } from '../../components';
+import { Container, Content, Form, Logo, ErrorMessage } from './styles';
+import logo from '../../assets/green-logo.png';
 
 const initialFormData = {
   email: '',
@@ -96,9 +91,7 @@ const Login: React.FC = () => {
           <ErrorMessage visible={!!validationErrors.password}>
             {validationErrors.password}
           </ErrorMessage>
-          <ErrorMessage visible={error}>
-            Email ou senha incorretos
-          </ErrorMessage>
+          <ErrorMessage visible={error}>Email ou senha incorretos</ErrorMessage>
           <Button type="submit">Login</Button>
         </Form>
       </Content>

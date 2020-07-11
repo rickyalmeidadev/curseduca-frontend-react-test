@@ -1,7 +1,7 @@
 import React from 'react';
-
-import { BounceLoader } from 'react-spinners';
 import { useTheme } from 'styled-components';
+import { BounceLoader } from 'react-spinners';
+
 import { Container } from './styles';
 
 const Loading: React.FC = () => {
