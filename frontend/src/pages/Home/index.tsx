@@ -16,6 +16,7 @@ interface Categories {
 
 const Home: React.FC = () => {
   const [categories, setCategories] = useState<Categories[]>([]);
+  const [toggle, setToggle] = useState(false);
 
   const { data, loading, authorsSelected, categoriesSelected } = useSelector(
     (state: ApplicationState) => state.posts,
@@ -43,11 +44,15 @@ const Home: React.FC = () => {
     return category.name;
   };
 
+  const handleToggle = () => {
+    setToggle(!toggle);
+  };
+
   return (
     <Container>
-      <Header />
+      <Header toggle={toggle} handleToggle={handleToggle} />
       <Content>
-        <Sidebar />
+        <Sidebar toggle={toggle} handleToggle={handleToggle} />
         <main>
           <h1>Postagens</h1>
           {/* <PostForm /> */}

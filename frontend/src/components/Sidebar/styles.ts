@@ -1,11 +1,41 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.aside`
+interface SidebarProps {
+  toggle: boolean;
+}
+
+export const Container = styled.aside<SidebarProps>`
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
   width: 100%;
+
+  padding: ${props => props.theme.paddings.normal};
+
+  background-color: ${props => props.theme.colors.light};
+
+  ${props =>
+    props.toggle
+      ? css`
+          transform: translateX(0);
+        `
+      : css`
+          transform: translateX(-100vw);
+        `}
+
+  transition: ${props => props.theme.transition};
+
+  > svg {
+    position: absolute;
+    top: 26px;
+    right: 16px;
+  }
 
   > h2,
   > h3 {
-    margin-bottom: ${props => props.theme.margins.normal};
+    margin: ${props => props.theme.margins.small} auto;
   }
 
   > ul {
@@ -15,6 +45,23 @@ export const Container = styled.aside`
       display: flex;
       align-items: center;
       margin-bottom: ${props => props.theme.margins.small};
+    }
+  }
+
+  > button {
+    display: block;
+    width: 100%;
+    margin: ${props => props.theme.margins.large} auto;
+  }
+
+  @media (min-width: 768px) {
+    position: relative;
+    height: auto;
+    background-color: transparent;
+    transform: translateX(0);
+
+    > button, > svg {
+      display: none;
     }
   }
 `;

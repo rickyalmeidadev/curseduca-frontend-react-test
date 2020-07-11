@@ -1,12 +1,14 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useEffect, ChangeEvent } from 'react';
 
-import api from '../../services/api';
-
-import { Container, Checkbox } from './styles';
-import { fetchGetAuthors, fetchGetCategories } from '../../store/posts/thunks';
 import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationState } from '../../store';
+import { fetchGetAuthors, fetchGetCategories } from '../../store/posts/thunks';
 import { setSelectedAuthors, setSelectedCategories } from '../../store/posts/actions';
+
+import { Container, Checkbox } from './styles';
+
+import { FiX } from 'react-icons/fi';
+import { Button } from '..';
 
 interface Category {
   id: number;
@@ -18,10 +20,12 @@ interface Author {
   email: string;
 }
 
-const Sidebar: React.FC = () => {
-  // const [authors, setAuthors] = useState<Author[]>([]);
-  // const [categories, setCategories] = useState<Category[]>([]);
+interface Props {
+  toggle: boolean;
+  handleToggle(): void;
+}
 
+const Sidebar: React.FC<Props> = ({ toggle, handleToggle }) => {
   const { authors, categories } = useSelector((state: ApplicationState) => state.posts);
 
   const dispatch = useDispatch();
@@ -49,7 +53,8 @@ const Sidebar: React.FC = () => {
   };
 
   return (
-    <Container>
+    <Container toggle={toggle}>
+      <FiX size="28px" color="#2A2A2A" onClick={handleToggle} />
       <h2>Filtros</h2>
       <h3>Autor</h3>
       <ul>
@@ -83,6 +88,8 @@ const Sidebar: React.FC = () => {
             ))
           : null}
       </ul>
+      <Button onClick={handleToggle}>Filtrar</Button>
+      <Button primary>Adicionar Post</Button>
     </Container>
   );
 };

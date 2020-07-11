@@ -21,6 +21,9 @@ export const Content = styled.div`
   }
 
   @media (min-width: 768px) {
+    > svg {
+      display: none;
+    }
     > button {
       display: block;
     }

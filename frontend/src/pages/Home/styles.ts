@@ -10,8 +10,8 @@ export const Content = styled.div`
   margin: 0 auto;
   padding: ${props => props.theme.paddings.normal};
 
-  > h1 {
-    margin-bottom: ${props => props.theme.margins.normal};
+  > main > h1 {
+    font-size: 2.6rem;
   }
 
   @media (min-width: 768px) {
