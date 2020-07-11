@@ -1,10 +1,11 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-
-import { Input, Textarea, Select, Button } from '..';
+import { useHistory } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationState } from '../../store';
 import { NewPost, fetchAddPosts } from '../../store/posts/thunks';
+
+import { Input, Textarea, Select, Button } from '..';
 import { Form } from './styles';
 
 interface NewPostForm {
@@ -23,6 +24,8 @@ type PostFormFields = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
 
 const PostForm: React.FC = () => {
   const [formData, setFormData] = useState(initialFormData);
+
+  const history = useHistory();
 
   const { auth, posts } = useSelector((state: ApplicationState) => state);
 
@@ -53,7 +56,12 @@ const PostForm: React.FC = () => {
 
     if (!loading && !error) {
       setFormData(initialFormData);
+      history.push('/');
     }
+  };
+
+  const handleHistory = () => {
+    history.push('/');
   };
 
   return (
@@ -70,7 +78,9 @@ const PostForm: React.FC = () => {
       <Button primary type="submit">
         Postar
       </Button>
-      <Button>Cancelar</Button>
+      <Button type="button" onClick={handleHistory}>
+        Cancelar
+      </Button>
     </Form>
   );
 };
