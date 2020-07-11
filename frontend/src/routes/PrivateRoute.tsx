@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { Route, Redirect, useLocation, RouteProps } from 'react-router-dom';
 
+import { Loading } from '../components';
+
 import { isAuthenticated } from '../services/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { authPersisted } from '../store/auth/actions';
@@ -11,18 +13,18 @@ interface Props extends RouteProps {
 }
 
 const PrivateRoute: React.FC<Props> = ({ component: Component, ...rest }) => {
-  const {loading} = useSelector((state: ApplicationState) => state.auth)
+  const { loading } = useSelector((state: ApplicationState) => state.auth);
   const location = useLocation();
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(authPersisted());
-  }, [dispatch])
+  }, [dispatch]);
 
   if (loading) {
-    return <span>loading...</span>
+    return <Loading />;
   }
-  
+
   if (!isAuthenticated()) {
     return <Redirect to={{ pathname: '/login', state: { from: location } }} />;
   }

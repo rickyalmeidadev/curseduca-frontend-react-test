@@ -28,6 +28,8 @@ export const Content = styled.div`
     > p {
       cursor: pointer;
 
+      display: block;
+
       font-family: Work Sans;
       font-weight: normal;
       font-size: 2rem;

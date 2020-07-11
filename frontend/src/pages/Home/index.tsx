@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ApplicationState } from '../../store';
 import { fetchGetPosts, fetchGetCategories } from '../../store/posts/thunks';
 
-import { Post, Header, Sidebar, Button } from '../../components';
+import { Post, Header, Sidebar, Button, Loading } from '../../components';
 
 import { Container, Content, PostControls } from './styles';
 
@@ -57,7 +57,7 @@ const Home: React.FC = () => {
           </PostControls>
           <ul>
             {loading ? (
-              <span>Loading...</span>
+              <Loading />
             ) : (
               data
                 .filter(post => {
