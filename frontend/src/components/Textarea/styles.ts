@@ -19,7 +19,7 @@ export const Label = styled.label`
     outline: none !important;
 
     width: 100%;
-    height: 53px;
+    height: 160px;
 
     margin-top: ${props => props.theme.margins.normal} !important;
     padding: ${props => props.theme.paddings.normal} !important;
@@ -48,8 +48,6 @@ export const Label = styled.label`
 
     :focus {
       border: 2px solid #a6bba8 !important;
-      height: 150px;
-
       box-shadow: inherit !important;
       transition: height 200ms ease-in-out;
     }
