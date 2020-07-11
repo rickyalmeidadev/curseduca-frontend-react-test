@@ -8,7 +8,7 @@ export default {
                 0 100px 80px rgba(0, 0, 0, 0.12)`,
   colors: {
     primary: '#A6BBA8',
-    secondary: '#f09a12',
+    secondary: '#B65131',
     success: '#75ddc0',
     danger: '#F89374',
     dark: '#2A2A2A',
