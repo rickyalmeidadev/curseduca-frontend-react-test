@@ -46,7 +46,7 @@ const Post: React.FC<Props> = ({ title, text, category, id, owner, postDate }) =
         {user.id === owner && <img src={deleteIcon} alt="Deletar" onClick={handleDelete} />}
       </Header>
       <Info>
-        {category} - <Moment format="DD/MM/YYYY hh:mm">{postDate}</Moment>
+        {category} - <Moment format="DD/MM/YYYY">{postDate}</Moment>
       </Info>
       <hr />
       {ReactHtmlParser(text)}

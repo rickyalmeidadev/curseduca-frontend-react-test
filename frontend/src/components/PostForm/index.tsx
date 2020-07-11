@@ -8,16 +8,20 @@ import { NewPost, fetchAddPosts } from '../../store/posts/thunks';
 import { Input, Textarea, Select, Button } from '..';
 import { Form } from './styles';
 
+import moment from 'moment';
+
 interface NewPostForm {
   title: string;
   text: string;
   categoryId: number;
+  date: string;
 }
 
 const initialFormData: NewPostForm = {
   title: '',
   text: '',
   categoryId: 1,
+  date: moment().format('YYYY-MM-DD'),
 };
 
 type PostFormFields = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
@@ -43,7 +47,7 @@ const PostForm: React.FC = () => {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
-    const { title, text, categoryId } = formData;
+    const { title, text, categoryId, date } = formData;
     const { id } = auth.user;
 
     const data: NewPost = {
@@ -51,7 +55,7 @@ const PostForm: React.FC = () => {
       text,
       id_category: Number(categoryId),
       id_user: id,
-      date: new Date(),
+      date: new Date(date),
     };
 
     await dispatch(fetchAddPosts(data));
@@ -79,6 +83,15 @@ const PostForm: React.FC = () => {
       />
       <Textarea name="text" label="Corpo" handleTextarea={handleTextarea} value={formData.text} />
       <Select onChange={handleChange} value={formData.categoryId} />
+      <Input
+        type="date"
+        name="date"
+        label="Agendar"
+        placeholder={formData.date}
+        min={new Date().toISOString().split('T')[0]}
+        onChange={handleChange}
+        value={formData.date}
+      />
       <Button primary type="submit">
         Postar
       </Button>
