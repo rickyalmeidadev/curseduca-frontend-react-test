@@ -70,6 +70,7 @@ const PostForm: React.FC = () => {
       <Button primary type="submit">
         Postar
       </Button>
+      <Button>Cancelar</Button>
     </Form>
   );
 };
