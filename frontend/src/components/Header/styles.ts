@@ -15,10 +15,20 @@ export const Content = styled.div`
 
   margin: 0 auto;
   padding: ${props => props.theme.paddings.normal};
+
+  > button {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    > button {
+      display: block;
+    }
+  }
 `;
 
 export const Logo = styled.figure`
-  width: 80px;
+  width: 160px;
 
   > img {
     width: 100%;

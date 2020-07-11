@@ -1,8 +1,10 @@
 import React from 'react';
 
+import { Button } from '..';
+
 import { Container, Content, Logo } from './styles';
 
-import logo from '../../assets/titulo-azul.png';
+import logo from '../../assets/green-logo.png';
 
 const Header: React.FC = () => {
   return (
@@ -11,6 +13,7 @@ const Header: React.FC = () => {
         <Logo>
           <img src={logo} alt="CursEduca blog" />
         </Logo>
+        <Button primary>Adicionar Post</Button>
       </Content>
     </Container>
   );

@@ -5,10 +5,6 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  column-gap: ${props => props.theme.margins.normal};
-
   width: 100%;
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
@@ -16,5 +12,11 @@ export const Content = styled.div`
 
   > h1 {
     margin-bottom: ${props => props.theme.margins.normal};
+  }
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: ${props => props.theme.margins.normal};
   }
 `;

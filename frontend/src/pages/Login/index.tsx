@@ -10,7 +10,7 @@ import { Input, Button } from '../../components';
 
 import { Container, Content, Form, Logo, ErrorMessage } from './styles';
 
-import logo from '../../assets/titulo-azul.png';
+import logo from '../../assets/green-logo.png';
 
 import { validateLoginData } from '../../helpers/validateLoginData';
 
