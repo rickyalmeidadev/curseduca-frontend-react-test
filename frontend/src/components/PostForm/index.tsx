@@ -8,9 +8,6 @@ import { NewPost, fetchAddPosts } from '../../store/posts/thunks';
 import { Input, Textarea, Select, Button } from '..';
 import { Form } from './styles';
 
-import CKEditor from '@ckeditor/ckeditor5-react';
-import InlineEditor from '@ckeditor/ckeditor5-build-inline';
-
 interface NewPostForm {
   title: string;
   text: string;
@@ -80,14 +77,7 @@ const PostForm: React.FC = () => {
         onChange={handleChange}
         value={formData.title}
       />
-      <Textarea name="text" label="Corpo" onChange={handleChange} value={formData.text}>
-        <CKEditor
-          editor={InlineEditor}
-          onChange={(_: any, editor: any) => {
-            handleTextarea(editor.getData());
-          }}
-        />
-      </Textarea>
+      <Textarea name="text" label="Corpo" handleTextarea={handleTextarea} value={formData.text} />
       <Select onChange={handleChange} value={formData.categoryId} />
       <Button primary type="submit">
         Postar
