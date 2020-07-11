@@ -3,12 +3,13 @@ import { useHistory } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { ApplicationState } from '../../store';
-import { Post as PostType } from '../../store/posts/types';
 import { fetchGetPosts, fetchGetCategories } from '../../store/posts/thunks';
 
 import { Post, Header, Sidebar, Button, Loading } from '../../components';
 
 import { Container, Content, PostControls } from './styles';
+
+import { isAFuturePost, applyFilterToPost } from '../../helpers/filters';
 
 const Home: React.FC = () => {
   const [toggle, setToggle] = useState(false);
@@ -36,14 +37,6 @@ const Home: React.FC = () => {
     return category.name;
   };
 
-  const applyFilterToPost = (post: PostType) => {
-    const shouldFilter =
-      (!authorsSelected.includes(post.id_user) && authorsSelected.length > 0) ||
-      (!categoriesSelected.includes(post.id_category) && categoriesSelected.length > 0);
-
-    return shouldFilter;
-  };
-
   const handleToggle = () => {
     setToggle(!toggle);
   };
@@ -69,7 +62,11 @@ const Home: React.FC = () => {
               <Loading />
             ) : (
               data.map(post => {
-                if (applyFilterToPost(post)) {
+                if (isAFuturePost(post.date)) {
+                  return null;
+                }
+
+                if (applyFilterToPost(post, authorsSelected, categoriesSelected)) {
                   return null;
                 }
 
