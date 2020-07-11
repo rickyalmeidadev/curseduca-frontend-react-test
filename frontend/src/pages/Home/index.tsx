@@ -2,37 +2,25 @@ import React, { useEffect, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { ApplicationState } from '../../store';
-import { fetchGetPosts } from '../../store/posts/thunks';
+import { fetchGetPosts, fetchGetCategories } from '../../store/posts/thunks';
 
 import { Post, Header, Sidebar } from '../../components';
 
 import { Container, Content } from './styles';
-import api from '../../services/api';
-
-interface Categories {
-  id: number;
-  name: string;
-}
 
 const Home: React.FC = () => {
-  const [categories, setCategories] = useState<Categories[]>([]);
   const [toggle, setToggle] = useState(false);
 
-  const { data, loading, authorsSelected, categoriesSelected } = useSelector(
+  const { data, loading, categories, authorsSelected, categoriesSelected } = useSelector(
     (state: ApplicationState) => state.posts,
   );
 
   const dispacth = useDispatch();
 
   useEffect(() => {
-    getCategories();
+    dispacth(fetchGetCategories());
     dispacth(fetchGetPosts());
   }, [dispacth]);
-
-  const getCategories = async () => {
-    const response = await api.get('categories');
-    setCategories(response.data);
-  };
 
   const parseCategory = (id: number) => {
     const category = categories.find(category => category.id === id);
@@ -55,7 +43,6 @@ const Home: React.FC = () => {
         <Sidebar toggle={toggle} handleToggle={handleToggle} />
         <main>
           <h1>Postagens</h1>
-          {/* <PostForm /> */}
           <ul>
             {loading ? (
               <span>Loading...</span>
