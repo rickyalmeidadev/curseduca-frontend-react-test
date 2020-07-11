@@ -17,7 +17,7 @@ export const Content = styled.div`
   padding: ${props => props.theme.paddings.normal};
 
   > button {
-    display: none;
+    font-size: 2rem;
   }
 
   p {
