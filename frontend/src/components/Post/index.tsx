@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchDeletePosts } from '../../store/posts/thunks';
+import { ApplicationState } from '../../store';
 
 import { Card, Title, Category, Text, Header } from './styles';
 
@@ -12,9 +13,12 @@ interface Props {
   title: string;
   text: string;
   category?: string;
+  owner: number;
 }
 
-const Post: React.FC<Props> = ({ title, text, category, id }) => {
+const Post: React.FC<Props> = ({ title, text, category, id, owner }) => {
+  const { user } = useSelector((state: ApplicationState) => state.auth);
+
   const dispatch = useDispatch();
 
   const handleDelete = () => {
@@ -25,7 +29,7 @@ const Post: React.FC<Props> = ({ title, text, category, id }) => {
     <Card>
       <Header>
         <Title>{title}</Title>
-        <img src={deleteIcon} alt="Deletar" onClick={handleDelete} />
+        {user.id === owner && <img src={deleteIcon} alt="Deletar" onClick={handleDelete} />}
       </Header>
       <Category>{category}</Category>
       <Text>{text}</Text>

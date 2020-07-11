@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ApplicationState } from '../../store';
 import { fetchGetPosts } from '../../store/posts/thunks';
 
-import { Post, PostForm, Header, Sidebar } from '../../components';
+import { Post, Header, Sidebar } from '../../components';
 
 import { Container, Content } from './styles';
 import api from '../../services/api';
@@ -17,7 +17,9 @@ interface Categories {
 const Home: React.FC = () => {
   const [categories, setCategories] = useState<Categories[]>([]);
 
-  const { data, loading, authorsSelected } = useSelector((state: ApplicationState) => state.posts);
+  const { data, loading, authorsSelected, categoriesSelected } = useSelector(
+    (state: ApplicationState) => state.posts,
+  );
 
   const dispacth = useDispatch();
 
@@ -55,23 +57,34 @@ const Home: React.FC = () => {
             ) : (
               data
                 .filter(post => {
+                  let shouldNotFilter = true;
                   /**
                    * If there is at least one author selected,
                    * we are going to filter.
                    */
                   if (authorsSelected.length) {
-                    return authorsSelected.includes(post.id_user);
+                    shouldNotFilter = authorsSelected.includes(post.id_user);
                   }
-
-                  return true;
+                  return shouldNotFilter;
                 })
-
+                .filter(post => {
+                  let shouldNotFilter = true;
+                  /**
+                   * If there is at least one category selected,
+                   * we are going to filter.
+                   */
+                  if (categoriesSelected.length) {
+                    shouldNotFilter = categoriesSelected.includes(post.id_category);
+                  }
+                  return shouldNotFilter;
+                })
                 .map(post => (
                   <Post
                     key={post.id}
                     id={post.id}
                     title={post.title}
                     text={post.text}
+                    owner={post.id_user}
                     category={parseCategory(post.id_category)}
                   />
                 ))

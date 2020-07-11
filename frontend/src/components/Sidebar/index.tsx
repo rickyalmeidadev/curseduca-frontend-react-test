@@ -6,7 +6,7 @@ import { Container, Checkbox } from './styles';
 import { fetchGetAuthors, fetchGetCategories } from '../../store/posts/thunks';
 import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationState } from '../../store';
-import { setSelectedAuthors } from '../../store/posts/actions';
+import { setSelectedAuthors, setSelectedCategories } from '../../store/posts/actions';
 
 interface Category {
   id: number;
@@ -31,33 +31,21 @@ const Sidebar: React.FC = () => {
     dispatch(fetchGetCategories());
   }, [dispatch]);
 
-  console.log(authors, categories);
-
-  // const fetchAuthors = async () => {
-  //   try {
-  //     const response = await api.get('users');
-  //     /**
-  //      * Here I used Object.values because the response returns an object,
-  //      * so I had to transform it into an array.
-  //      */
-  //     setAuthors(Object.values(response.data));
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // const fetchCategories = async () => {
-  //   try {
-  //     const response = await api.get('categories');
-  //     setCategories(response.data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
   const handleFilter = (event: ChangeEvent<HTMLInputElement>) => {
-    const { id } = event.target;
-    dispatch(setSelectedAuthors(Number(id)));
+    const { name, id } = event.target;
+
+    switch (name) {
+      case 'author':
+        dispatch(setSelectedAuthors(Number(id)));
+        break;
+
+      case 'category':
+        dispatch(setSelectedCategories(Number(id)));
+        break;
+
+      default:
+        break;
+    }
   };
 
   return (
@@ -70,7 +58,7 @@ const Sidebar: React.FC = () => {
               <li key={author.id}>
                 <Checkbox
                   type="checkbox"
-                  name={author.email}
+                  name="author"
                   id={String(author.id)}
                   onChange={handleFilter}
                 />
@@ -84,7 +72,12 @@ const Sidebar: React.FC = () => {
         {categories.length
           ? categories.map(category => (
               <li key={category.id}>
-                <Checkbox type="checkbox" name={category.name} id={String(category.id)} />
+                <Checkbox
+                  type="checkbox"
+                  name="category"
+                  id={String(category.id)}
+                  onChange={handleFilter}
+                />
                 {category.name}
               </li>
             ))
