@@ -1,5 +1,5 @@
 import api from '../../services/api';
-
+import { History } from 'history';
 import { Dispatch } from 'redux';
 import {
   postRequest,
@@ -29,13 +29,14 @@ export const fetchGetPosts = () => {
   };
 };
 
-export const fetchAddPosts = (data: NewPost) => {
+export const fetchAddPosts = (data: NewPost, history: History) => {
   return async (dispatch: Dispatch) => {
     dispatch(postRequest());
 
     try {
       const response = await api.post('posts', data);
       dispatch(addPostSuccess(response.data));
+      history.push('/');
     } catch (error) {
       console.error('error: ', error);
       dispatch(postError());

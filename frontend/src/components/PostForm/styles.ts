@@ -11,3 +11,16 @@ export const Form = styled.form`
     margin: ${props => props.theme.margins.normal} auto;
   }
 `;
+
+interface ErrorMessageProps {
+  visible: boolean;
+}
+
+export const ErrorMessage = styled.span<ErrorMessageProps>`
+  display: block;
+  visibility: ${props => (props.visible ? 'visible' : 'hidden')};
+
+  min-height: 2rem;
+
+  color: ${props => props.theme.colors.danger};
+`;

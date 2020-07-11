@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import moment from 'moment';
@@ -6,7 +6,7 @@ import moment from 'moment';
 import { ApplicationState } from '../../store';
 import { NewPost, fetchAddPosts } from '../../store/posts/thunks';
 import { Input, Textarea, Select, Button } from '..';
-import { Form } from './styles';
+import { Form, ErrorMessage } from './styles';
 
 interface NewPostForm {
   title: string;
@@ -27,9 +27,16 @@ type PostFormFields = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
 const PostForm: React.FC = () => {
   const [formData, setFormData] = useState(initialFormData);
 
+  useEffect(() => {
+    setFormData(initialFormData);
+  }, []);
+
   const history = useHistory();
 
-  const { auth, posts } = useSelector((state: ApplicationState) => state);
+  const {
+    auth,
+    posts: { error },
+  } = useSelector((state: ApplicationState) => state);
 
   const dispatch = useDispatch();
 
@@ -56,14 +63,7 @@ const PostForm: React.FC = () => {
       date: new Date(date),
     };
 
-    await dispatch(fetchAddPosts(data));
-
-    const { loading, error } = posts;
-
-    if (!loading && !error) {
-      setFormData(initialFormData);
-      history.push('/');
-    }
+    dispatch(fetchAddPosts(data, history));
   };
 
   const handleHistory = () => {
@@ -90,6 +90,7 @@ const PostForm: React.FC = () => {
         onChange={handleChange}
         value={formData.date}
       />
+      <ErrorMessage visible={error}> Falha ao adicionar post</ErrorMessage>
       <Button primary type="submit">
         Postar
       </Button>
