@@ -26,6 +26,13 @@ export const Card = styled.li`
 
   margin: ${props => props.theme.margins.larger} auto;
   padding: ${props => props.theme.paddings.large};
+
+  > hr {
+    height: 0.1px;
+    margin: ${props => props.theme.margins.large} 0;
+    background-color: ${props => props.theme.colors.grey};
+    border: none;
+  }
 `;
 
 export const Title = styled.h2`

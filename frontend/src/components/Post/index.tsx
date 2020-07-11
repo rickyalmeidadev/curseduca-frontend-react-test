@@ -8,6 +8,8 @@ import { Card, Title, Category, Text, Header } from './styles';
 
 import deleteIcon from '../../assets/delete-icon.png';
 
+import ReactHtmlParser from 'react-html-parser';
+
 interface Props {
   id: number;
   title: string;
@@ -32,7 +34,8 @@ const Post: React.FC<Props> = ({ title, text, category, id, owner }) => {
         {user.id === owner && <img src={deleteIcon} alt="Deletar" onClick={handleDelete} />}
       </Header>
       <Category>{category}</Category>
-      <Text>{text}</Text>
+      <hr />
+      <Text>{ReactHtmlParser(text)}</Text>
     </Card>
   );
 };
