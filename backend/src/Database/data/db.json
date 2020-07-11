@@ -1,20 +1,44 @@
 {
   "posts": [
     {
-      "title": "Minha primeira postagem",
-      "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil ratione corrupti nobis quisquam, totam aliquid eveniet neque laudantium similique, aspernatur, dicta mollitia! Cum ipsa animi ea quae quasi rem fugiat!\n",
+      "title": "Lorem ipsum",
+      "text": "<p><strong>Lorem ipsum</strong>, dolor sit amet consectetur adipisicing elit. Nihil ratione corrupti nobis quisquam, totam aliquid eveniet neque laudantium similique, aspernatur, dicta mollitia! Cum ipsa animi ea quae quasi rem fugiat!</p>",
       "id_category": 2,
       "id_user": 1,
       "date": "2020-07-10T16:28:27.190Z",
       "id": 1
     },
     {
-      "title": "Essa é a segunda postagem",
-      "text": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet veritatis, et dolorem exercitationem commodi aut enim? Id, tenetur reiciendis recusandae, velit nobis asperiores sapiente fugiat, obcaecati accusamus molestiae nesciunt repellat?",
+      "title": "Lorem amet",
+      "text": "<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet veritatis, et dolorem exercitationem commodi aut enim? Id, tenetur reiciendis recusandae, velit nobis asperiores sapiente fugiat, obcaecati accusamus molestiae nesciunt repellat?</p>",
       "id_category": 4,
-      "id_user": 1,
+      "id_user": 2,
       "date": "2020-07-10T16:44:26.894Z",
       "id": 2
+    },
+    {
+      "title": "Lorem elit",
+      "text": "<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. <em>Eveniet veritatis<em/>, et dolorem exercitationem commodi aut enim? Id, tenetur reiciendis recusandae, velit nobis asperiores sapiente fugiat, obcaecati accusamus molestiae nesciunt repellat?</p>",
+      "id_category": 1,
+      "id_user": 1,
+      "date": "2020-07-10T19:29:56.013Z",
+      "id": 3
+    },
+    {
+      "title": "Lorem ratione",
+      "text": "<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet veritatis, et dolorem exercitationem commodi aut enim? Id, <em>tenetur reiciendis recusandae<em/>, molestiae nesciunt</p>",
+      "id_category": 1,
+      "id_user": 2,
+      "date": "2020-07-10T19:29:56.013Z",
+      "id": 4
+    },
+    {
+      "title": "Lorem sit",
+      "text": "<p>Lorem ipsum dolor sit tenetur reiciendis recusandae, <strong>velit nobis</strong> asperiores sapiente</p>",
+      "id_category": 3,
+      "id_user": 3,
+      "date": "2020-07-11T03:46:29.392Z",
+      "id": 5
     }
   ],
   "categories": [
