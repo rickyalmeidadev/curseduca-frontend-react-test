@@ -20,3 +20,19 @@ export const Content = styled.div`
     column-gap: ${props => props.theme.margins.normal};
   }
 `;
+
+export const PostControls = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > button {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    > button {
+      display: block;
+    }
+  }
+`;
