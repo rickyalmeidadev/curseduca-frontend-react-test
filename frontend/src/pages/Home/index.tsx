@@ -78,6 +78,7 @@ const Home: React.FC = () => {
                     text={post.text}
                     owner={post.id_user}
                     category={parseCategory(post.id_category)}
+                    postDate={post.date}
                   />
                 ))
             )}

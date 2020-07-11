@@ -56,7 +56,8 @@ export const Category = styled.small`
   margin-bottom: ${props => props.theme.margins.small};
 `;
 
-export const Text = styled.p`
-  line-height: 150%;
-  letter-spacing: 0.02em;
+export const Author = styled.p`
+  margin-top: ${props => props.theme.margins.normal};
+  color: ${props => props.theme.colors.grey};
+  text-align: right;
 `;
