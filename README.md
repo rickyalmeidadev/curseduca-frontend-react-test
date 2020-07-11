@@ -1,6 +1,6 @@
 # Curseduca - Frontend
 
-## About The Project
+## :page_facing_up: About The Project
 
 The challenge was to build an interface for a list of posts, similar to those existants in social medias, using React and Redux.
 
@@ -11,7 +11,7 @@ The challenge was to build an interface for a list of posts, similar to those ex
 - [Redux](https://redux.js.org/)
 - [Styled Components](https://styled-components.com/)
 
-## Getting Started
+## :package: Getting Started
 
 ### Installation
 
@@ -59,7 +59,7 @@ You can find registered users available for login in:
 backend/src/Database/data/users.json
 ```
 
-## Features and future improvements
+## :bulb: Features and future improvements
 
 - [x] Login validations with UI feedbacks
 - [x] List post in a timeline
@@ -74,6 +74,6 @@ backend/src/Database/data/users.json
 - [ ] Unit tests
 - [ ] Integration tests
 
-## Contact
+## :mailbox: Contact
 
 Ricky Almeida - [email](mailto:ricky.almeida.dev@gmail.com) - [linkedin](https://www.linkedin.com/in/rickyalmeidadev/)
