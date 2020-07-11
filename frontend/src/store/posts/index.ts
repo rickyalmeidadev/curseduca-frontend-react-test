@@ -46,22 +46,38 @@ const reducer: Reducer<PostsState, PostsAction> = (state = INITIAL_STATE, action
       return { ...state, categories: action.payload as Category[] };
 
     case PostsTypes.SET_SELECTED_AUTHORS:
-      const id = action.payload as number;
+      const providedAuthorId = action.payload as number;
 
-      const found = state.authorsSelected.find(authorId => authorId === id);
+      const authorFound = state.authorsSelected.find(authorId => authorId === providedAuthorId);
 
-      if (found) {
+      if (authorFound) {
         return {
           ...state,
-          authorsSelected: state.authorsSelected.filter(authorId => authorId !== id),
+          authorsSelected: state.authorsSelected.filter(authorId => authorId !== providedAuthorId),
         };
       }
 
-      state.authorsSelected.push(id);
+      state.authorsSelected.push(providedAuthorId);
       return { ...state };
 
-    // case PostsTypes.SET_SELECTED_CATEGORIES:
-    //   return { ...state, categoriesSelected: action.payload };
+    case PostsTypes.SET_SELECTED_CATEGORIES:
+      const providedCategoryId = action.payload as number;
+
+      const categoryFound = state.categoriesSelected.find(
+        categoryId => categoryId === providedCategoryId,
+      );
+
+      if (categoryFound) {
+        return {
+          ...state,
+          categoriesSelected: state.categoriesSelected.filter(
+            categoryId => categoryId !== providedCategoryId,
+          ),
+        };
+      }
+
+      state.categoriesSelected.push(providedCategoryId);
+      return { ...state };
 
     default:
       return state;
